@@ -1,0 +1,8 @@
+Targets vi ønsker å sjekke. Alt under linje 5 blir lest av main
+Starter under ------------------
+
+185.220.101.1 
+google.com
+asdasdasd
+8.8.8.8
+
