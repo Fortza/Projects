@@ -13,6 +13,8 @@ done
 bashFil=$(ls *.sh | wc -l) #teller antall bash fielr
 pyFil=$(ls *.py | wc -l) # teller antall python filer
 
+
+printf "\n"
 printf "\n Det er Totalt \t %d bash-skript" "$bashFil"
 printf "\n Det er Totalt \t %d python-skript" "$pyFil"
 
