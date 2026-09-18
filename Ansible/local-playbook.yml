@@ -1,0 +1,28 @@
+- name: My first playbook for local commands
+  hosts: local # gruppe local macbook
+  tasks: # Rekke kommandoer for å sjekke status på macbook
+
+    # Henter hostname fra maskinen
+    - name: Get hostname
+      ansible.builtin.command:
+        cmd: hostname
+
+    # Hvor lenge pcen har kjørt
+    - name: Get uptime
+      ansible.builtin.command:
+        cmd: uptime
+
+    # Hvem kjører kommandoen
+    - name: Get User
+      ansible.builtin.command:
+        cmd: whoami
+
+    # Sjekker diskplass på mac'en
+    - name: Get Disk
+      ansible.builtin.shell:
+        cmd: "df -h | grep disk3s1s1"
+      register: disk_output
+
+    - name: Show disk output
+      ansible.builtin.debug:
+        var: disk_output.stdout
