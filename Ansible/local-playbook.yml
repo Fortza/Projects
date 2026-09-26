@@ -3,26 +3,45 @@
   tasks: # Rekke kommandoer for å sjekke status på macbook
 
     # Henter hostname fra maskinen
-    - name: Get hostname
-      ansible.builtin.command:
-        cmd: hostname
+  #  - name: Get hostname
+   #   ansible.builtin.command:
+    #    cmd: hostname
+     # register: hostname_output
+
+   # - name: Show Hostname
+    #  ansible.builtin.debug:
+     #   var: hostname_output.stdout
 
     # Hvor lenge pcen har kjørt
     - name: Get uptime
       ansible.builtin.command:
         cmd: uptime
+      register: uptime_output
+
+    - name: Show uptime
+      ansible.builtin.debug:
+        var: uptime_output.stdout
 
     # Hvem kjører kommandoen
     - name: Get User
       ansible.builtin.command:
         cmd: whoami
+      register: user_output
+
+    - name: Show User
+      ansible.builtin.debug:
+        var: user_output.stdout
 
     # Sjekker diskplass på mac'en
     - name: Get Disk
       ansible.builtin.shell:
-        cmd: "df -h | grep disk3s1s1"
+        cmd: "df -h | head -5"
       register: disk_output
 
     - name: Show disk output
       ansible.builtin.debug:
         var: disk_output.stdout
+
+    - name: Show hostname from fact
+      ansible.builtin.debug:
+        var: ansible_facts["hostname"]
